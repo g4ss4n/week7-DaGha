@@ -147,6 +147,11 @@ button {
   background: whitesmoke;
 }
 
+.title{
+  margin-left: 24%;
+  font-family: 'Segoe UI';
+}
+
 ul {
   list-style-type: none;
   padding: 5px 5px;

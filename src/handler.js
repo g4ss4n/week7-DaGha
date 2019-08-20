@@ -17,7 +17,7 @@ const handlerHomeRoute = response => {
 
 const handlePublic = (request, response) => {
   const { url } = request;
-  console.log("url", url);
+  
   const extention = url.split(".")[1];
 
   const extentionType = {
@@ -43,8 +43,6 @@ const handlePublic = (request, response) => {
 const handleIcon = response => {
   const filePath = path.join(__dirname, "..", url);
   fs.readFile(filePath, (error, file) => {
-    console.log("reachhhh");
-
     if (error) {
       console.log(error);
       response.writeHead(500, { "Content-Type": "text/html" });
@@ -55,6 +53,15 @@ const handleIcon = response => {
     }
   });
 };
+
+const handleSignIn = (request,response)=>{
+  
+}
+
+const handleRegister = (request, response)=>{
+
+}
+
 const handleNotFound = response => {
   response.writeHead(404);
   response.end("<h1>This page cannot be found</h1>");
@@ -63,5 +70,7 @@ module.exports = {
   handlerHomeRoute,
   handlePublic,
   handleNotFound,
-  handleIcon
+  handleIcon,
+  handleRegister,
+  handleSignIn
 };
