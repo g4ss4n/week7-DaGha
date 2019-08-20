@@ -1,0 +1,181 @@
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-emphasis: none;
+}
+
+button {
+  box-shadow: 2px 2px 5px gray;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: black;
+  color: white;
+  padding: 10px 10px;
+  box-shadow: 5px 5px 5px rgba(203, 0, 78, 0.769);
+}
+
+#menu-icon {
+  width: 20px;
+  height: auto;
+}
+
+#logo {
+  height: 40px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+}
+
+.menu a:hover {
+  color: skyblue;
+}
+
+.menu input {
+  color: white;
+  background: black;
+  border: rgb(0, 0, 0);
+  border-bottom: 2px solid rgb(255, 255, 255);
+}
+
+#search-input {
+  padding: 10px 10px;
+  width: 20vw;
+  height: 30px;
+  border-bottom: solid 1px white;
+}
+
+#search-icon {
+  position: relative;
+  top: 4px;
+  height: 20px;
+  width: auto;
+}
+
+.post {
+  border-top: white 2px solid;
+  background: whitesmoke;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#name-pass-input {
+  margin: 20px 20px;
+  padding: 10px 10px;
+  width: 30vw;
+}
+
+#post-title-input {
+  margin: 20px 20px;
+  padding: 10px 10px;
+  width: 30vw;
+}
+
+#post-input {
+  border: black;
+  padding: 10px 10px;
+  margin: 10px 20px;
+  width: 90vw;
+}
+
+#post-button {
+  margin: 20px 20px;
+  width: 20vw;
+  height: 30px;
+  background: black;
+  color: whitesmoke;
+  border-bottom: 2px solid white;
+}
+
+#post-button:hover {
+  color: skyblue;
+  border-bottom: 2px solid skyblue;
+}
+
+.reg-sec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.log-sec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#reg-logo {
+  height: 20vw;
+  border-radius: 50%;
+  transition: transform 4s ease-in-out;
+  transform: rotateZ(360deg);
+  transform: rotateX(360deg);
+  transform: rotateY(360deg);
+}
+
+.content {
+  padding: 16px;
+}
+
+.register {
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.register input {
+  width: 40vw;
+  height: 40px;
+  padding: 5px 5px;
+  margin: 3px 3px;
+  border: white;
+  border-bottom: black 2px solid;
+}
+
+.posts {
+  border-top: white 2px solid;
+  padding: 20px 20px;
+  background: whitesmoke;
+}
+
+ul {
+  list-style-type: none;
+  padding: 5px 5px;
+}
+li {
+  list-style-type: none;
+  border-left: 2px solid black;
+  padding: 5px 5px;
+  margin: 3px 3px;
+}
+
+#comment-button {
+  background: black;
+  color: whitesmoke;
+  height: 30px;
+}
+
+#comment-button:hover {
+  color: skyblue;
+  border-bottom: 2px solid skyblue;
+}
+
+#comment-post {
+  width: 50vw;
+  height: 30px;
+  padding: 10px 10px;
+}
+
+#comment-name {
+  height: 30px;
+  padding: 10px 10px;
+}
