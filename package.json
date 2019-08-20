@@ -23,7 +23,9 @@
   "homepage": "https://github.com/facn6/week7-DaGha#readme",
   "dependencies": {
     "dotenv": "^8.1.0",
+    "env2": "^2.2.2",
     "nodemon": "^1.19.1",
+    "pg": "^7.12.1",
     "supertest": "^4.0.2",
     "tape": "^4.11.0"
   }
