@@ -20,8 +20,8 @@ const handlerHomeRoute = response => {
       console.log(error);
       response.writeHead(500, { "Content-type": "text/html" });
       response.end("<h1> Sorry, there was a server error</h1>");
-    } else {
-      response.writeHead(200, { "Content-type": "text/html" });
+    } else {      
+      response.writeHead(200, {"Content-type": "text/html" });
       response.end(file);
     }
   });
@@ -77,11 +77,13 @@ const handleRegister = (request, response)=>{
   });
   request.on('end', () => {
     var new_data = JSON.parse(data);
-      console.log("dataaaa" ,JSON.parse(data));
     postData(new_data.username, new_data.password , new_data.first_name , new_data.last_name, err => {
       if(err){ return serverError(err, response);}
-      else{response.writeHead(302, {Location: '/' });
-      response.end()
+      else{
+        console.log("got hereeeeeeeeeeeeeeee");
+        
+      response.writeHead(302, {'Location': '/'});
+      return response.end()
     }
     });
   });

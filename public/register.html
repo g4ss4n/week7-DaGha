@@ -15,11 +15,13 @@
             <section class="reg-sec">
                 <div class="register">
               <form enctype="multipart/form-data" name="person">
-                <input type="text" placeholder="Username" name="username" id="username"/>
-                <input type="text" name="first_name" placeholder="First Name" id="first_name" />
-                <input type="text" name="last_name" placeholder="Last Name" id="last_name"/>
-                <input type="password" placeholder="Password" name="password" id="password"/>
-                <input type="password" placeholder="Confirm Passwords" id="confirm_password"/>
+                <input type="text" placeholder="Username" name="username" id="username" required/>
+                <input type="text" name="first_name" placeholder="First Name" id="first_name"required />
+                <input type="text" name="last_name" placeholder="Last Name" id="last_name" required/>
+                <input type="password" placeholder="Password" name="password" id="password" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" />
+                <span><p id="passwordErr"></p></span>
+
+                <input type="password" placeholder="Confirm Passwords" id="confirm_password" required/>
                 <span><p id="confirmErr"></p></span>
 
                   <button type="button" id="post-button" >Register</button>

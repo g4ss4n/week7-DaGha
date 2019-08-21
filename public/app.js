@@ -2,7 +2,20 @@ var confirmPassword = document.getElementById("confirm_password");
 var password = document.getElementById("password");
 var confirmErr = document.getElementById("confirmErr");
 var postButton = document.getElementById("post-button");
+var passwordErr = document.getElementById("passwordErr");
 
+password.addEventListener("input",(event)=>{
+  event.preventDefault();
+  if (password.validity.patternMismatch) {
+      passwordErr.innerText = "Password must contain at least eight characters, including one letter and one number";
+      passwordErr.style.color="red";
+  } else if (password.validity.valueMissing) {
+    passwordErr.innerText = "Please enter a password";
+  } else {
+    passwordErr.innerText = "";
+    return true;
+  }
+})
 
 confirmPassword.addEventListener("input",(event)=>{
   event.preventDefault();
@@ -21,10 +34,6 @@ confirmPassword.addEventListener("input",(event)=>{
   })
  
 
-
-
-
-//confirmPassword.addEventListener("input", check);
 postButton.addEventListener("click" , (event)=>{
   event.preventDefault();
   let formData = new FormData(document.forms.person);
