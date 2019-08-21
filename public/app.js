@@ -34,7 +34,22 @@ password.addEventListener("input", event => {
     passwordErr.innerText = "";
     return true;
   }
-});
+})
+
+confirmPassword.addEventListener("input",(event)=>{
+  event.preventDefault();
+    if (password.value != confirmPassword.value) {
+      confirmErr.innerText = "Passwords do not match";
+      confirmErr.style.color = "red"
+    } else if (confirmPassword.validity.valueMissing) {
+      confirmErr.innerText = "Please confirm your password";
+    } else {
+      postButton.disabled = false;
+      confirmErr.innerText = "";
+      return true;
+    }
+  })
+ 
 
 postButton.addEventListener("click", event => {
   event.preventDefault();
