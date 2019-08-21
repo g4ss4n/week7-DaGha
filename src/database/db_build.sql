@@ -25,7 +25,7 @@ BEGIN;
 
     INSERT INTO results (user_id,q1,q2,q3,q4,result)
     VALUES
-        (1, 3, 2, 3, 1, 'Great'),
-        (2, 3, 2, 4, 1, 'Not good');
+        (1, 3, 2, 3, 1, 'Handsome, lovely, handsome again ofc'),
+        (2, 3, 2, 4, 1, 'ugly, so damn UGLY');
 
     COMMIT;

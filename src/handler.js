@@ -2,12 +2,16 @@ const fs = require("fs");
 const path = require("path");
 require("dotenv").config();
 const postData = require('./queries/postData.js');
+const { getUsers } = require("./queries/getData");
+const { getResults } = require("./queries/getData");
+
 
 const serverError = (err, response) => {
   response.writeHead(500, "Content-Type:text/html");
   response.end("<h1>Sorry, there was a problem loading the homepage</h1>");
   console.log(err);
 };
+
 
 const handlerHomeRoute = response => {
   const filepath = path.join(__dirname, "..", "public", "index.html");
@@ -25,7 +29,7 @@ const handlerHomeRoute = response => {
 
 const handlePublic = (request, response) => {
   const { url } = request;
-  
+
   const extention = url.split(".")[1];
 
   const extentionType = {
@@ -62,9 +66,6 @@ const handleIcon = response => {
   });
 };
 
-const handleLOgIn = (request,response)=>{
-
-}
 
 const handleRegister = (request, response)=>{
   // console.log("req" , request);
@@ -85,6 +86,21 @@ const handleRegister = (request, response)=>{
     });
   });
 }
+const handleSignIn = response => {
+  console.log("GET USERS", getUsers());
+  if (err) {
+    response.writeHead(500, "Content-Type:text/html");
+    response.end("<h1>Sorry, we cannot show you anything...<h1>");
+    console.log(err);
+  } else {
+    let output = JSON.stringify(response);
+    console.log("Output", output);
+    response.writeHead(200, { "content-type": "application/json" });
+    response.end(output);
+  }
+};
+
+
 
 const handleNotFound = response => {
   response.writeHead(404);
@@ -96,5 +112,5 @@ module.exports = {
   handleNotFound,
   handleIcon,
   handleRegister,
-  handleLOgIn
+  handleSignIn
 };
