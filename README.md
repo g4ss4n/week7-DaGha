@@ -38,4 +38,4 @@ We have two tables here
 
 As you can see it has one to one relationship.
 
-![](https://imgur.com/D6Q8Oue)
+![](https://imgur.com/D6Q8Oue.png)
