@@ -10,7 +10,7 @@ const router = (req, res) => {
   } else {
     endPoint = url;
   }
-  if (endPoint === "/") {
+  if (endPoint === "/") {    
     handlers.handlerHomeRoute(res);
   } else if (endPoint.includes("public")) {
     handlers.handlePublic(req, res);
