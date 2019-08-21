@@ -5,9 +5,10 @@ BEGIN;
 
     CREATE TABLE users(
         user_id SERIAL PRIMARY KEY,
-        username VARCHAR(15) NOT NULL,
-        first_name VARCHAR(30) NOT NULL,
-        last_name VARCHAR (30) NOT NULL);
+        username VARCHAR(15),
+        password VARCHAR,
+        first_name VARCHAR(30),
+        last_name VARCHAR (30));
 
     CREATE TABLE results(
         user_id INTEGER NOT NULL,
@@ -17,10 +18,10 @@ BEGIN;
         q4 INTEGER NOT NULL,
         result VARCHAR(100));
 
-    INSERT INTO users (username,first_name,last_name)
+    INSERT INTO users (username,password,first_name,last_name)
     VALUES
-    ('g4ss4n','Ghassan', 'Gharzuzy'),
-    ('danafalah', 'Dana', 'Falah');
+    ('g4ss4n', '123456' ,'Ghassan', 'Gharzuzy'),
+    ('danafalah', '123456' , 'Dana', 'Falah');
 
     INSERT INTO results (user_id,q1,q2,q3,q4,result)
     VALUES

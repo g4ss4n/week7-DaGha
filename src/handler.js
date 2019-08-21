@@ -1,6 +1,14 @@
 const fs = require("fs");
 const path = require("path");
 require("dotenv").config();
+const postData = require('./queries/postData.js');
+
+const serverError = (err, response) => {
+  response.writeHead(500, "Content-Type:text/html");
+  response.end("<h1>Sorry, there was a problem loading the homepage</h1>");
+  console.log(err);
+};
+
 const handlerHomeRoute = response => {
   const filepath = path.join(__dirname, "..", "public", "index.html");
   fs.readFile(filepath, (error, file) => {
@@ -27,7 +35,7 @@ const handlePublic = (request, response) => {
     ico: "image/x-icon",
     png: "image/png"
   };
-  const filepath = path.join(__dirname, "..", "public/", url);
+  const filepath = path.join(__dirname, "..", url);
   fs.readFile(filepath, (error, file) => {
     if (error) {
       console.log(error);
@@ -54,12 +62,28 @@ const handleIcon = response => {
   });
 };
 
-const handleSignIn = (request,response)=>{
-  
+const handleLOgIn = (request,response)=>{
+
 }
 
 const handleRegister = (request, response)=>{
-
+  // console.log("req" , request);
+  // console.log("res " ,response)
+  let data = '';
+  request.on('data', chunk => {
+    console.log("chunk" , chunk); 
+    data += chunk;
+  });
+  request.on('end', () => {
+    var new_data = JSON.parse(data);
+      console.log("dataaaa" ,JSON.parse(data));
+    postData(new_data.username, new_data.password , new_data.first_name , new_data.last_name, err => {
+      if(err){ return serverError(err, response);}
+      else{response.writeHead(302, {Location: '/' });
+      response.end()
+    }
+    });
+  });
 }
 
 const handleNotFound = response => {
@@ -72,5 +96,5 @@ module.exports = {
   handleNotFound,
   handleIcon,
   handleRegister,
-  handleSignIn
+  handleLOgIn
 };
