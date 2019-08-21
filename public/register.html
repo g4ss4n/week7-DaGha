@@ -23,29 +23,37 @@
               placeholder="Username"
               name="username"
               id="username"
+              required
             />
             <input
               type="text"
               name="first_name"
               placeholder="First Name"
               id="first_name"
+              required
             />
             <input
               type="text"
               name="last_name"
               placeholder="Last Name"
               id="last_name"
+              required
             />
             <input
               type="password"
               placeholder="Password"
               name="password"
               id="password"
+              required
+              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
             />
+            <span><p id="passwordErr"></p></span>
+
             <input
               type="password"
               placeholder="Confirm Passwords"
               id="confirm_password"
+              required
             />
             <span><p id="confirmErr"></p></span>
 
@@ -57,6 +65,6 @@
         </div>
       </section>
     </section>
-    <script src="app.js" type="text/javascript"></script>
+    <script src="/public/app.js" type="text/javascript"></script>
   </body>
 </html>
