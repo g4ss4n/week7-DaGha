@@ -80,8 +80,6 @@ const handleRegister = (request, response)=>{
     postData(new_data.username, new_data.password , new_data.first_name , new_data.last_name, err => {
       if(err){ return serverError(err, response);}
       else{
-        console.log("got hereeeeeeeeeeeeeeee");
-        
       response.writeHead(302, {'Location': '/'});
       return response.end()
     }

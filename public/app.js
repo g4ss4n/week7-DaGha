@@ -22,10 +22,8 @@ confirmPassword.addEventListener("input",(event)=>{
     if (password.value != confirmPassword.value) {
       confirmErr.innerText = "Passwords do not match";
       confirmErr.style.color = "red"
-      postButton.disabled = true;
     } else if (confirmPassword.validity.valueMissing) {
       confirmErr.innerText = "Please confirm your password";
-      postButton.disabled = true;
     } else {
       postButton.disabled = false;
       confirmErr.innerText = "";
