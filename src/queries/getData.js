@@ -1,15 +1,19 @@
 const databaseConnection = require("../database/db_connection.js");
+const bcrypt = require("bcrypt");
 // var SQL = require("sql-template-strings");
 
 // Gets a tables of the usernames and the passwords
-const getUsers = cb => {
+const getUsers = (username, password, cb) => {
   databaseConnection.query(
     `SELECT username,password
-     FROM users;`,
+     FROM users 
+     WHERE username LIKE '${username}';`,
     (err, res) => {
       if (err) {
         cb(err);
       } else {
+        console.log("users", res.rows[0].password);
+        // bcrypt.compare()
         cb(null, res.rows);
       }
     }
