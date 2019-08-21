@@ -99,6 +99,20 @@ button {
   border-bottom: 2px solid skyblue;
 }
 
+#get-button {
+  margin: 20px 20px;
+  width: 20vw;
+  height: 30px;
+  background: black;
+  color: whitesmoke;
+  border-bottom: 2px solid white;
+}
+
+#get-button:hover {
+  color: skyblue;
+  border-bottom: 2px solid skyblue;
+}
+
 .reg-sec {
   display: flex;
   flex-direction: row;
@@ -141,46 +155,17 @@ button {
   border-bottom: black 2px solid;
 }
 
-.posts {
-  border-top: white 2px solid;
+.sign-in {
   padding: 20px 20px;
-  background: whitesmoke;
+  display: flex;
+  flex-direction: column;
 }
 
-.title{
-  margin-left: 24%;
-  font-family: 'Segoe UI';
-}
-
-ul {
-  list-style-type: none;
-  padding: 5px 5px;
-}
-li {
-  list-style-type: none;
-  border-left: 2px solid black;
+.sign-in input {
+  width: 40vw;
+  height: 40px;
   padding: 5px 5px;
   margin: 3px 3px;
-}
-
-#comment-button {
-  background: black;
-  color: whitesmoke;
-  height: 30px;
-}
-
-#comment-button:hover {
-  color: skyblue;
-  border-bottom: 2px solid skyblue;
-}
-
-#comment-post {
-  width: 50vw;
-  height: 30px;
-  padding: 10px 10px;
-}
-
-#comment-name {
-  height: 30px;
-  padding: 10px 10px;
+  border: white;
+  border-bottom: black 2px solid;
 }
