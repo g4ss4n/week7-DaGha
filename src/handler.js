@@ -3,6 +3,10 @@ const path = require("path");
 require("dotenv").config();
 const postData = require("./queries/postData.js");
 const getData = require("./queries/getData.js");
+const bcrypt = require("bcrypt");
+const { parse } = require("cookie");
+const { sign, verify } = require("jsonwebtoken");
+const SECRET = "poiugyhghxfgxnghfgmfm";
 //const { getResults } = require("./queries/getData");
 
 const serverError = (err, response) => {
@@ -99,13 +103,18 @@ const handleSignIn = (request, response) => {
 
   request.on("end", () => {
     var new_data = JSON.parse(data);
-    getData.getUsers(new_data.username, new_data.password, err => {
+    getData.getUsers(new_data.username, new_data.password, (res, err) => {
       if (err) {
         response.writeHead(500, "Content-Type:text/html");
-        response.end("<h1>Sorry, we cannot show you anything...<h1>");
+        response.end("<h1>failed get data<h1>");
       } else {
-        response.writeHead(200, { "content-type": "application/json" });
-        response.end();
+        console.log("herreeeee");
+        const cookie = sign(JSON.stringify(data), SECRET);
+        res.writeHead(302, {
+          Location: "/",
+          "Set-Cookie": ` logged-in=true jwt=${cookie}, HttpOnly`
+        });
+        res.end();
       }
     });
   });

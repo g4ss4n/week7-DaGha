@@ -1,8 +1,7 @@
 const databaseConnection = require("../database/db_connection.js");
 const bcrypt = require("bcrypt");
-// var SQL = require("sql-template-strings");
+const { sign, verify } = require("jsonwebtoken");
 
-// Gets a tables of the usernames and the passwords
 const getUsers = (username, password, cb) => {
   databaseConnection.query(
     `SELECT username,password
@@ -12,9 +11,40 @@ const getUsers = (username, password, cb) => {
       if (err) {
         cb(err);
       } else {
-        console.log("users", res.rows[0].password);
-        // bcrypt.compare()
-        cb(null, res.rows);
+        var pass = res.rows[0].password;
+        console.log("pass:", pass);
+
+        bcrypt.compare(`${password}`, pass, (err, res) => {
+          if (err) {
+            console.log(err);
+          } else {
+            if (pass != `${password}`) {
+              console.log("msg", "password is incorrect");
+            } else {
+              console.log("res", res);
+              if (!res) {
+                console.log("No PASS");
+                res.writeHead(500, "Content-Type:text/html");
+                res.end("<h1>Inncorrect password, access denied</h1>");
+              } else {
+                var token = sign(
+                  {
+                    name: `${username}`,
+                    logged_in: true
+                  },
+                  "ourSecret"
+                );
+                console.log(token);
+                res.writeHead(302, {
+                  "Set-Cookie": `data = ${token}; HttpOnly`,
+                  Location: "/"
+                });
+                console.log("Token", token);
+                return res.end();
+              }
+            }
+          }
+        });
       }
     }
   );
