@@ -23,8 +23,11 @@
   "homepage": "https://github.com/facn6/week7-DaGha#readme",
   "dependencies": {
     "bcrypt": "^3.0.6",
+    "cookie-parser": "^1.4.4",
+    "cookies": "^0.7.3",
     "dotenv": "^8.1.0",
     "env2": "^2.2.2",
+    "jsonwebtoken": "^8.5.1",
     "nodemon": "^1.19.1",
     "pg": "^7.12.1",
     "qs": "^6.8.0",
