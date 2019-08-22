@@ -2,30 +2,26 @@ const databaseConnection = require("../database/db_connection.js");
 const bcrypt = require("bcrypt");
 const { sign, verify } = require("jsonwebtoken");
 
-const getUsers = (username, password, cb) => {
+const getUsers = (username, password,handlerResponse, cb) => {
   databaseConnection.query(
     `SELECT username,password
      FROM users 
      WHERE username LIKE '${username}';`,
-    (err, res) => {
+    (err, response) => {
       if (err) {
         cb(err);
       } else {
-        var pass = res.rows[0].password;
-        console.log("pass:", pass);
-
-        bcrypt.compare(`${password}`, pass, (err, res) => {
+        var pass = response.rows[0].password;
+        var myPass = `${password}`;
+        bcrypt.compare(myPass, pass, (err, res) => {
+          console.log("password" , `${password}`)
+          console.log("pass " , pass)
           if (err) {
             console.log(err);
           } else {
-            if (pass != `${password}`) {
-              console.log("msg", "password is incorrect");
-            } else {
-              console.log("res", res);
               if (!res) {
-                console.log("No PASS");
-                res.writeHead(500, "Content-Type:text/html");
-                res.end("<h1>Inncorrect password, access denied</h1>");
+                handlerResponse.writeHead(500, "Content-Type:text/html");
+                handlerResponse.end("<h1>Inncorrect password, access denied</h1>");
               } else {
                 var token = sign(
                   {
@@ -34,15 +30,13 @@ const getUsers = (username, password, cb) => {
                   },
                   "ourSecret"
                 );
-                console.log(token);
-                res.writeHead(302, {
+                handlerResponse.writeHead(302, {
                   "Set-Cookie": `data = ${token}; HttpOnly`,
                   Location: "/"
                 });
-                console.log("Token", token);
-                return res.end();
+                return handlerResponse.end();
               }
-            }
+           
           }
         });
       }
