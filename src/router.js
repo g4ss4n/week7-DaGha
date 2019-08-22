@@ -1,10 +1,9 @@
 const handlers = require("./handler.js");
 
 const router = (req, res) => {
-  //console.log("Router method", `${req.method} ${req.url}`);
+  console.log("Router method", `${req.url}`);
 
   const url = req.url;
-  let endPoint = "";
   if (url.indexOf("?") > -1) {
     endPoint = url.split("?")[0];
   } else {
@@ -12,7 +11,7 @@ const router = (req, res) => {
   }
   if (endPoint === "/") {    
     handlers.handlerHomeRoute(res);
-  } else if (endPoint.includes("public")) {
+  } else if (endPoint.includes("public")) {    
     handlers.handlePublic(req, res);
   } else if (endPoint === "/public/favicon.ico") {
     handlers.handleIcon(res);

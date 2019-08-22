@@ -65,4 +65,7 @@ postButton.addEventListener("click", event => {
   xhr.open("POST", "/register", true);
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send(JSON.stringify(data));
-});
+  });
+
+
+  
