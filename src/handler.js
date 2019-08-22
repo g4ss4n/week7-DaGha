@@ -3,11 +3,7 @@ const path = require("path");
 require("dotenv").config();
 const postData = require("./queries/postData.js");
 const getData = require("./queries/getData.js");
-const bcrypt = require("bcrypt");
-const { parse } = require("cookie");
-const { sign, verify } = require("jsonwebtoken");
-const SECRET = "poiugyhghxfgxnghfgmfm";
-//const { getResults } = require("./queries/getData");
+
 
 const serverError = (err, response) => {
   response.writeHead(500, "Content-Type:text/html");
@@ -30,6 +26,7 @@ const handlerHomeRoute = response => {
 };
 
 const handlePublic = (request, response) => {
+  
   const { url } = request;
 
   const extention = url.split(".")[1];
@@ -48,7 +45,9 @@ const handlePublic = (request, response) => {
       response.writeHead(500, { "Content-type": extentionType.html });
       response.end("<h1>Sorry, there was a server error</h1>");
     } else {
+      
       response.writeHead(200, { "Content-type": extentionType[extention] });
+
       response.end(file);
     }
   });
@@ -80,13 +79,9 @@ const handleRegister = (request, response) => {
       new_data.password,
       new_data.first_name,
       new_data.last_name,
+      response,
       err => {
-        if (err) {
-          return serverError(err, response);
-        } else {
-          response.writeHead(302, { Location: "/" });
-          response.end();
-        }
+      
       }
     );
   });

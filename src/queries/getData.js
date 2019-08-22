@@ -17,6 +17,7 @@ const getUsers = (username, password, handlerResponse, cb) => {
           if (err) {
             console.log(err);
           } else {
+
             if (!res) {
               handlerResponse.writeHead(500, "Content-Type:text/html");
               handlerResponse.end(
@@ -37,6 +38,7 @@ const getUsers = (username, password, handlerResponse, cb) => {
               console.log("You're logged in");
               return handlerResponse.end();
             }
+
           }
         });
       }
