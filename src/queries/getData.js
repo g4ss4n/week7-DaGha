@@ -2,7 +2,7 @@ const databaseConnection = require("../database/db_connection.js");
 const bcrypt = require("bcrypt");
 const { sign, verify } = require("jsonwebtoken");
 
-const getUsers = (username, password,handlerResponse, cb) => {
+const getUsers = (username, password, handlerResponse, cb) => {
   databaseConnection.query(
     `SELECT username,password
      FROM users 
@@ -17,24 +17,28 @@ const getUsers = (username, password,handlerResponse, cb) => {
           if (err) {
             console.log(err);
           } else {
-              if (!res) {
-                handlerResponse.writeHead(500, "Content-Type:text/html");
-                handlerResponse.end("Inncorrect password, access denied");
-              } else {
-                var token = sign(
-                  {
-                    name: `${username}`,
-                    logged_in: true
-                  },
-                  "ourSecret"
-                );
-                handlerResponse.writeHead(302, {
-                  "Set-Cookie": `data = ${username} logged_in: true`,
-                   'Location': "/"
-                });
-                 handlerResponse.end();
-              }
-           
+
+            if (!res) {
+              handlerResponse.writeHead(500, "Content-Type:text/html");
+              handlerResponse.end(
+                `<h1>Inncorrect password, access denied</h1>`
+              );
+            } else {
+              var token = sign(
+                {
+                  name: `${username}`,
+                  logged_in: true
+                },
+                "ourSecret"
+              );
+              handlerResponse.writeHead(302, {
+                Location: "/",
+                "Set-Cookie": `data = ${username};`
+              });
+              console.log("You're logged in");
+              return handlerResponse.end();
+            }
+
           }
         });
       }

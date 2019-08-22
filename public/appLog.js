@@ -1,5 +1,6 @@
 var getButton = document.getElementById("get-button");
-console.log("APPLOG works");
+var Logged = document.getElementById("logged");
+var cookies = document.cookie.split("=")[1];
 
 //Login
 getButton.addEventListener("click", event => {
@@ -9,9 +10,19 @@ getButton.addEventListener("click", event => {
     username: formData.get("usernameLog"),
     password: formData.get("passwordLog")
   };
-  console.log("Data works", data);
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "/login", true);
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send(JSON.stringify(data));
+});
+
+getButton.addEventListener("mouseleave", event => {
+  event.preventDefault();
+  console.log("cookies - ", cookies);
+
+  if (cookies) {
+    Logged.innerHTML = `<p>Hello ${cookies}, you're logged in</p>`;
+  } else {
+    Logged.innerHTML = `<p id="red">please log-in</p>`;
+  }
 });

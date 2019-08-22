@@ -34,22 +34,21 @@ password.addEventListener("input", event => {
     passwordErr.innerText = "";
     return true;
   }
-})
+});
 
-confirmPassword.addEventListener("input",(event)=>{
+confirmPassword.addEventListener("", event => {
   event.preventDefault();
-    if (password.value != confirmPassword.value) {
-      confirmErr.innerText = "Passwords do not match";
-      confirmErr.style.color = "red"
-    } else if (confirmPassword.validity.valueMissing) {
-      confirmErr.innerText = "Please confirm your password";
-    } else {
-      postButton.disabled = false;
-      confirmErr.innerText = "";
-      return true;
-    }
-  })
- 
+  if (password.value != confirmPassword.value) {
+    confirmErr.innerText = "Passwords do not match";
+    confirmErr.style.color = "red";
+  } else if (confirmPassword.validity.valueMissing) {
+    confirmErr.innerText = "Please confirm your password";
+  } else {
+    postButton.disabled = false;
+    confirmErr.innerText = "";
+    return true;
+  }
+});
 
 postButton.addEventListener("click", event => {
   event.preventDefault();
@@ -60,7 +59,6 @@ postButton.addEventListener("click", event => {
     first_name: formData.get("first_name"),
     last_name: formData.get("last_name")
   };
-  console.log("post");
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "/register", true);
   xhr.setRequestHeader("Content-Type", "application/json");
