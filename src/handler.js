@@ -71,7 +71,6 @@ const handleIcon = response => {
 const handleRegister = (request, response) => {
   let data = "";
   request.on("data", chunk => {
-    console.log("chunk", chunk);
     data += chunk;
   });
   request.on("end", () => {
@@ -96,15 +95,12 @@ const handleRegister = (request, response) => {
 const handleSignIn = (request, response) => {
   let data = "";
   request.on("data", chunk => {
-    console.log("chunk", chunk);
     data += chunk;
-    console.log("Data", data);
   });
 
   request.on("end", () => {
     var new_data = JSON.parse(data);
-    getData.getUsers(new_data.username, new_data.password,response, (err) => {
-    });
+    getData.getUsers(new_data.username, new_data.password, response, err => {});
   });
 };
 

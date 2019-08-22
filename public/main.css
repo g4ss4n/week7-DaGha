@@ -19,6 +19,10 @@ button {
   box-shadow: 5px 5px 5px rgba(203, 0, 78, 0.769);
 }
 
+#red {
+  color: red;
+}
+
 #menu-icon {
   width: 20px;
   height: auto;
@@ -78,9 +82,9 @@ button {
   width: 30vw;
 }
 
-.title{
+.title {
   margin-left: 15%;
-  margin-bottom:-2%;
+  margin-bottom: -2%;
   font-family: sans-serif;
 }
 #post-input {
@@ -122,11 +126,10 @@ button {
   border-bottom: 2px solid white;
 }
 
-.buttons{
- display: flex;
- flex-direction: row;
- margin-right: 50%; 
-  
+.buttons {
+  display: flex;
+  flex-direction: row;
+  margin-right: 50%;
 }
 
 #get-button:hover {
@@ -147,8 +150,6 @@ button {
   justify-content: space-around;
   align-items: center;
 }
-
-
 
 #reg-logo {
   height: 20vw;
@@ -191,4 +192,17 @@ button {
   margin: 3px 3px;
   border: white;
   border-bottom: black 2px solid;
+}
+
+.logged {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  color: green;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  margin: 10px 10px;
+}
+.logged button {
+  color: red;
 }
