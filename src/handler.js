@@ -103,19 +103,7 @@ const handleSignIn = (request, response) => {
 
   request.on("end", () => {
     var new_data = JSON.parse(data);
-    getData.getUsers(new_data.username, new_data.password, (res, err) => {
-      if (err) {
-        response.writeHead(500, "Content-Type:text/html");
-        response.end("<h1>failed get data<h1>");
-      } else {
-        console.log("herreeeee");
-        const cookie = sign(JSON.stringify(data), SECRET);
-        res.writeHead(302, {
-          Location: "/",
-          "Set-Cookie": ` logged-in=true jwt=${cookie}, HttpOnly`
-        });
-        res.end();
-      }
+    getData.getUsers(new_data.username, new_data.password,response, (err) => {
     });
   });
 };
