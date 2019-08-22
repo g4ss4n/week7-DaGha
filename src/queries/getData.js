@@ -14,14 +14,12 @@ const getUsers = (username, password,handlerResponse, cb) => {
         var pass = response.rows[0].password;
         var myPass = `${password}`;
         bcrypt.compare(myPass, pass, (err, res) => {
-          console.log("password" , `${password}`)
-          console.log("pass " , pass)
           if (err) {
             console.log(err);
           } else {
               if (!res) {
                 handlerResponse.writeHead(500, "Content-Type:text/html");
-                handlerResponse.end("<h1>Inncorrect password, access denied</h1>");
+                handlerResponse.end("Inncorrect password, access denied");
               } else {
                 var token = sign(
                   {
@@ -31,10 +29,10 @@ const getUsers = (username, password,handlerResponse, cb) => {
                   "ourSecret"
                 );
                 handlerResponse.writeHead(302, {
-                  "Set-Cookie": `data = ${token}; HttpOnly`,
-                  Location: "/"
+                  "Set-Cookie": `data = ${username} logged_in: true`,
+                   'Location': "/"
                 });
-                return handlerResponse.end();
+                 handlerResponse.end();
               }
            
           }

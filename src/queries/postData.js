@@ -1,7 +1,7 @@
 const dbConnection = require("../database/db_connection.js");
 const bcrypt = require("bcrypt");
 
-const postData = (username, password, first_name, last_name, cb) => {
+const postData = (username, password, first_name, last_name,response, cb) => {
   bcrypt.hash(password, 10, function(err, hash) {
     if (err) {
       consolr.log("error");
@@ -14,6 +14,11 @@ const postData = (username, password, first_name, last_name, cb) => {
           cb(null, res);
         }
       );
+     console.log("got to the postdata")
+
+      response.writeHead(302, {'Location': 'public/sign-in.html'});
+
+      response.end();
     }
   });
 };

@@ -79,9 +79,7 @@ button {
 }
 
 .title{
-  margin-left: 15%;
-  margin-bottom:-2%;
-  font-family: sans-serif;
+text-align: center;
 }
 #post-input {
   border: black;
@@ -122,12 +120,6 @@ button {
   border-bottom: 2px solid white;
 }
 
-.buttons{
- display: flex;
- flex-direction: row;
- margin-right: 50%; 
-  
-}
 
 #get-button:hover {
   color: skyblue;
@@ -139,11 +131,12 @@ button {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  margin-left: 30%;
 }
 
 .log-sec {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
