@@ -1,6 +1,4 @@
-# DaGha APP
-
-Website - https://daghaapp.herokuapp.com/
+# Simple Registration APP
 
 Currently not working! try running it locally.
 This app is about personality tests, means
